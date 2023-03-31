@@ -1,11 +1,14 @@
 ## How to run file
 
-1.download zip file
-2.extract zip file in your sytem
-3.open file in VS code
-4.open terminal in Vs code
-5.run command- npm i
-6.run command- npm start
+1.download zip file.\
+2.extract zip file in your sytem.\
+3.open file in VS code.\
+4.open terminal in Vs code.\
+5.run command- npm i.\
+6.run command- npm start.\
+
+## Host Link
+Link:- https://shubham13101996.github.io/Cosmo_Cloud_Test/ 
 
 ## ScreenShot
 ![chrome_screenshot_localhost (2)](https://user-images.githubusercontent.com/121822895/229191168-bbcb73d1-3095-4501-a39c-b774c316aa7d.png)
