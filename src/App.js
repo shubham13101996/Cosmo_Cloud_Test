@@ -16,7 +16,6 @@ const App = () => {
   //  hooks
   const [inputdata, setInputData] = useState("");
   const [selectedOption, setSelectedOption] = useState("Object");
-  const [options, setOptions] = useState("");
 
   const [items, setItems] = useState(getLocalData());
   const [isEditItem, setIsEditItem] = useState("");
@@ -25,9 +24,9 @@ const App = () => {
   // add the items function
   const addItem = (option) => {
     if (!inputdata) {
-      alert("plz fill the data");
+      alert("**Please Add The Field**");
     } else if (inputdata && toggleButton && option) {
-      console.log(option);
+      // console.log(option);
       setItems(
         items.map((curElem) => {
           if (curElem.id === isEditItem) {
@@ -37,7 +36,6 @@ const App = () => {
         })
       );
 
-      // setOptions(option);
       setInputData("");
       setIsEditItem(null);
       setToggleButton(false);
@@ -54,12 +52,12 @@ const App = () => {
   };
 
   // edit item by finding them with help of id
-  const editItem = (index, editoption) => {
-    const item_todo_edited = items.find((curElem) => {
+  const editItem = (index) => {
+    const item_edited = items.find((curElem) => {
       return curElem.id === index;
     });
-    setInputData(item_todo_edited.name);
-    setSelectedOption(item_todo_edited.option);
+    setInputData(item_edited.name);
+    setSelectedOption(item_edited.option);
     setIsEditItem(index);
     setToggleButton(true);
   };
@@ -118,7 +116,8 @@ const App = () => {
             <div id="toggle">
               {toggleButton ? (
                 <i
-                  className="far fa-edit add-btn"
+                  className=" fa-regular fa-floppy-disk add-btn"
+                  // far fa-edit
                   onClick={() => addItem(selectedOption)}
                 ></i>
               ) : (
@@ -142,7 +141,7 @@ const App = () => {
                   <div className="todo-btn">
                     <i
                       className="far fa-edit add-btn"
-                      onClick={() => editItem(curElem.id, curElem.option)}
+                      onClick={() => editItem(curElem.id)}
                     ></i>
                     <i
                       className="far fa-trash-alt add-btn"
@@ -171,196 +170,3 @@ const App = () => {
 };
 
 export default App;
-
-// create a code for user input with dropdown menu using react
-
-// import React, { useState } from "react";
-
-// function DropdownMenu() {
-//   const [selectedOption, setSelectedOption] = useState("Option 1");
-
-//   const handleOptionChange = (e) => {
-//     setSelectedOption(e.target.value);
-//   };
-
-//   return (
-//     <div>
-//       <label htmlFor="dropdown">Select an option:</label>
-//       <select id="dropdown" value={selectedOption} onChange={handleOptionChange}>
-//         <option value="Option 1">Option 1</option>
-//         <option value="Option 2">Option 2</option>
-//         <option value="Option 3">Option 3</option>
-//       </select>
-//       <p>You selected: {selectedOption}</p>
-//     </div>
-//   );
-// }
-
-// export default DropdownMenu;
-
-// import React from "react";
-// import DropdownMenu from "./DropdownMenu";
-
-// function App() {
-//   return (
-//     <div>
-//       <DropdownMenu />
-//     </div>
-//   );
-// }
-
-// export default App;
-
-// <-----====================------->
-// import React, { useState } from 'react';
-
-// function DropdownMenu() {
-//   const [selectedOption, setSelectedOption] = useState("");
-
-//   function handleOptionChange(event) {
-//     setSelectedOption(event.target.value);
-//   }
-
-//   return (
-//     <div>
-//       <label htmlFor="dropdown">Select an option:</label>
-//       <select id="dropdown" value={selectedOption} onChange={handleOptionChange}>
-//         <option value="">--Please choose an option--</option>
-//         <option value="option1">Option 1</option>
-//         <option value="option2">Option 2</option>
-//         <option value="option3">Option 3</option>
-//       </select>
-//       <p>You selected: {selectedOption}</p>
-//     </div>
-//   );
-// }
-
-// export default DropdownMenu;
-
-// import React from 'react';
-// import DropdownMenu from './DropdownMenu';
-
-// function App() {
-//   return (
-//     <div>
-//       <h1>My App</h1>
-//       <DropdownMenu />
-//     </div>
-//   );
-// }
-
-// export default App;
-
-// <<------------------=======================--------------------->>
-// import React, { useState } from 'react';
-
-// function Field({ name, type, onChange, onDelete, onAddNestedField, nestedFields }) {
-//   const [fieldName, setFieldName] = useState(name);
-//   const [fieldType, setFieldType] = useState(type);
-
-//   function handleFieldNameChange(event) {
-//     setFieldName(event.target.value);
-//     onChange(name, event.target.value, fieldType);
-//   }
-
-//   function handleFieldTypeChange(event) {
-//     setFieldType(event.target.value);
-//     onChange(name, fieldName, event.target.value);
-//   }
-
-//   function handleDeleteClick() {
-//     onDelete(name);
-//   }
-
-//   function handleAddNestedFieldClick() {
-//     onAddNestedField(name);
-//   }
-
-//   return (
-//     <div>
-//       <input type="text" value={fieldName} onChange={handleFieldNameChange} />
-//       <select value={fieldType} onChange={handleFieldTypeChange}>
-//         <option value="string">String</option>
-//         <option value="number">Number</option>
-//         <option value="boolean">Boolean</option>
-//         <option value="object">Object</option>
-//       </select>
-//       {type === "object" && (
-//         <button onClick={handleAddNestedFieldClick}>Add Nested Field</button>
-//       )}
-//       <button onClick={handleDeleteClick}>Delete</button>
-//       {type === "object" && nestedFields.map((nestedField) => (
-//         <div key={nestedField.name} style={{ marginLeft: 20 }}>
-//           <Field {...nestedField} onChange={onChange} onDelete={onDelete} onAddNestedField={onAddNestedField} />
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-
-// function InterfaceEditor({ fields, onSave }) {
-//   const [fieldsData, setFieldsData] = useState(fields);
-
-//   function handleFieldChange(name, newName, newType) {
-//     setFieldsData((prevState) =>
-//       prevState.map((field) =>
-//         field.name === name ? { ...field, name: newName, type: newType } : field
-//       )
-//     );
-//   }
-
-//   function handleFieldDelete(name) {
-//     setFieldsData((prevState) => prevState.filter((field) => field.name !== name));
-//   }
-
-//   function handleAddFieldClick() {
-//     setFieldsData((prevState) => [
-//       ...prevState,
-//       {
-//         name: "",
-//         type: "string",
-//         nestedFields: [],
-//       },
-//     ]);
-//   }
-
-//   function handleAddNestedField(name) {
-//     setFieldsData((prevState) =>
-//       prevState.map((field) =>
-//         field.name === name
-//           ? {
-//               ...field,
-//               type: "object",
-//               nestedFields: [
-//                 ...field.nestedFields,
-//                 {
-//                   name: "",
-//                   type: "string",
-//                   nestedFields: [],
-//                 },
-//               ],
-//             }
-//           : field
-//       )
-//     );
-//   }
-
-//   function handleSaveClick() {
-//     console.log(fieldsData);
-//     onSave(fieldsData);
-//   }
-
-//   return (
-//     <div>
-//       {fieldsData.map((field) => (
-//         <div key={field.name}>
-//           <Field {...field} onChange={handleFieldChange} onDelete={handleFieldDelete} onAddNestedField={handleAddNestedField} />
-//         </div>
-//       ))}
-//       <button onClick={handleAddFieldClick}>Add Field</button>
-//       <button onClick={handleSaveClick}>Save</button>
-//     </div>
-//   );
-// }
-
-// export default InterfaceEditor;
