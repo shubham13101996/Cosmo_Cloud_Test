@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Cosmo_Cloud_Test/static/css/main.d9f036d5.css",
+    "main.js": "/Cosmo_Cloud_Test/static/js/main.bac726ad.js",
+    "index.html": "/Cosmo_Cloud_Test/index.html",
+    "main.d9f036d5.css.map": "/Cosmo_Cloud_Test/static/css/main.d9f036d5.css.map",
+    "main.bac726ad.js.map": "/Cosmo_Cloud_Test/static/js/main.bac726ad.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d9f036d5.css",
+    "static/js/main.bac726ad.js"
+  ]
+}
